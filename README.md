@@ -7,6 +7,7 @@ The script exports multiple files from Blender into fbx models.
 It searches the path recursively and creates .fbx files next to the .blend files, then it renames corresponding Unity *.blend.meta files to *.fbx.meta to keep editor references, then <b>it deletes the .blend files</b> (make your own backup somewhere outside of the project path).
 
 This script uses custom version of Unity-BlenderToFBX.py that Unity uses internally for importing .blend files. It has been changed to allow passing arguments to it and to load the necessary .blend file.
+
 You can find the original file at [Unity path]\Editor\Data\Tools\Unity-BlenderToFBX.py
 
 You need Blender to be installed on your machine. 
