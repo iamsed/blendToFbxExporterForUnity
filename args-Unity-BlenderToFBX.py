@@ -18,10 +18,12 @@ else:
 		# This might need to be bpy.Quit()
 		raise
 
-
+# Accept command line arguments and load the contents of the .blend file
 infile = sys.argv[5]
 bpy.ops.wm.open_mainfile(filepath=infile)
 outfile = sys.argv[6]
+
+
 # Do the conversion
 print("Starting blender to FBX conversion " + outfile)
 

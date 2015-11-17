@@ -1,7 +1,7 @@
 # blendToFbxExporterForUnity
 
 Created by Krzysztof Żarczyński (@iamsed) on 16.11.15.
-http://blog.kzarczynski.com/
+http://blog.kzarczynski.com/2015/11/wanted-to-use-unity-cloud-build-but-all-my-blender-models-disappeared-solution/
 
 The script exports multiple files from Blender into fbx models. 
 It searches the path recursively and creates .fbx files next to the .blend files, then it renames corresponding Unity *.blend.meta files to *.fbx.meta to keep editor references, then <b>it deletes the .blend files</b> (make your own backup somewhere outside of the project path).
