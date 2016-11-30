@@ -25,7 +25,7 @@ import fnmatch
 import subprocess
 
 if len(sys.argv) != 7:
-    print("\nusage: <path to Blender> --background --python <path to blendToDaeExporter.py> -- <path to args-Unity-BlenderToFBX.py>  <path to the project (.blend files)>")
+    print("\nusage: <path to Blender> --background --python <path to blendToFBXExporter.py> -- <path to args-Unity-BlenderToFBX.py>  <path to the project (.blend files)>")
 else:
     pathToBlender = sys.argv[0]
     pathToBlenderToFBX = sys.argv[5]
@@ -36,11 +36,17 @@ else:
     for dirpath, dirnames, files in os.walk(path) 
     for f in fnmatch.filter(files, '*.blend')]
     for infile in configfiles:
-        outfilename = infile.replace('blend', 'fbx')
+        outfilename = infile.replace('.blend', '.fbx')
         if os.path.isfile(outfilename):
             alreadyHaveFBX.append(infile)
         else:
-            status = subprocess.call(pathToBlender + ' --background --python ' + pathToBlenderToFBX + '  -- "' + infile + '" "' + outfilename + '"');
+            proc = ("{pathToBlender} --background --python {pathToBlenderToFBX} -- {infile} {outfile}").format(
+                pathToBlender=pathToBlender,
+                pathToBlenderToFBX=pathToBlenderToFBX,
+                infile=infile,
+                outfile=outfilename
+            )
+            status = subprocess.call(proc, shell=True)
             os.remove(infile)
             processedFiles.append(infile)
         
@@ -48,7 +54,7 @@ else:
     for dirpath, dirnames, files in os.walk(path) 
     for f in fnmatch.filter(files, '*.blend.meta')]
     for infile in configfiles:
-        outfilename = infile.replace('blend', 'fbx')
+        outfilename = infile.replace('.blend', '.fbx')
         if not os.path.isfile(outfilename):
             os.rename(infile, outfilename)
 
