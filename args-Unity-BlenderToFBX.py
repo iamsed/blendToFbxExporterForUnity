@@ -7,14 +7,14 @@ except:
 	import bpy	
 
 if blender249:
-	try: import export_fbx
+	try: import export_fbx_bin
 	except:
-		print('error: export_fbx not found.')
+		print('error: export_fbx_bin not found.')
 		Blender.Quit()
 else:
-	try: import io_scene_fbx.export_fbx
+	try: import io_scene_fbx.export_fbx_bin
 	except:
-		print('error: io_scene_fbx.export_fbx not found.')
+		print('error: io_scene_fbx.export_fbx_bin not found.')
 		# This might need to be bpy.Quit()
 		raise
 
@@ -29,7 +29,7 @@ print("Starting blender to FBX conversion " + outfile)
 
 if blender249:
 	mtx4_x90n = Blender.Mathutils.RotationMatrix(-90, 4, 'x')
-	export_fbx.write(outfile,
+	export_fbx_bin.write(outfile,
 		EXP_OBS_SELECTED=False,
 		EXP_MESH=True,
 		EXP_MESH_APPLY_MOD=True,
@@ -61,7 +61,7 @@ else:
 	minorVersion = bpy.app.version[1];	
 	if minorVersion <= 58:
 		# 2.58
-		io_scene_fbx.export_fbx.save(FakeOp(), bpy.context, filepath=outfile,
+		io_scene_fbx.export_fbx_bin.save(FakeOp(), bpy.context, filepath=outfile,
 			global_matrix=mtx4_x90n,
 			use_selection=False,
 			object_types=exportObjects,
@@ -74,8 +74,8 @@ else:
 			BATCH_OWN_DIR=False)
 	else:
 		# 2.59 and later
-		kwargs = io_scene_fbx.export_fbx.defaults_unity3d()
-		io_scene_fbx.export_fbx.save(FakeOp(), bpy.context, filepath=outfile, **kwargs)
+		kwargs = io_scene_fbx.export_fbx_bin.defaults_unity3d()
+		io_scene_fbx.export_fbx_bin.save(FakeOp(), bpy.context, filepath=outfile, **kwargs)
 	# HQ normals are not supported in the current exporter
 
 print("Finished blender to FBX conversion " + outfile)
