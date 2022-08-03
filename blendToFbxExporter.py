@@ -1,8 +1,8 @@
 #
 # blendToFbxExporter.py
 #
-# Created by Krzysztof Żarczyński (@iamsed) on 16.11.15.
-# http://blog.kzarczynski.com/
+# Created by Krzysztof Żarczyński (@iamsed) on Nov 16, 2015. (Archived April 8, 2016)
+# https://web.archive.org/web/20160804175703/http://kzarczynski.com/2015/11/wanted-to-use-unity-cloud-build-but-all-my-blender-models-disappeared-solution
 # Copyright (c) 2015 Krzysztof Żarczyński. All rights reserved.
 #	
 
