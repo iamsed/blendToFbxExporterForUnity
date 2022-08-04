@@ -58,9 +58,15 @@ else:
 	
 	exportObjects = ['ARMATURE', 'EMPTY', 'MESH']
 		
+	# Identify and display the python version
+	majorVersion = bpy.app.version[0]; 
 	minorVersion = bpy.app.version[1];	
-	if minorVersion <= 58:
+	pyVer = ".".join(str(i) for i in bpy.app.version);
+	print("Python version: " + pyVer);
+	
+	if majorVersion <= 2 and minorVersion <= 58:
 		# 2.58
+		print("<= v2.58")
 		io_scene_fbx.export_fbx_bin.save(FakeOp(), bpy.context, filepath=outfile,
 			global_matrix=mtx4_x90n,
 			use_selection=False,
@@ -74,6 +80,7 @@ else:
 			BATCH_OWN_DIR=False)
 	else:
 		# 2.59 and later
+		print(">= v2.59")
 		kwargs = io_scene_fbx.export_fbx_bin.defaults_unity3d()
 		io_scene_fbx.export_fbx_bin.save(FakeOp(), bpy.context, filepath=outfile, **kwargs)
 	# HQ normals are not supported in the current exporter
