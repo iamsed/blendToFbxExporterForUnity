@@ -40,7 +40,8 @@ else:
         if os.path.isfile(outfilename):
             alreadyHaveFBX.append(infile)
         else:
-            proc = ("{pathToBlender} --background --python {pathToBlenderToFBX} -- {infile} {outfile}").format(
+            print('Running blendToFbxExporter pt5a, looking at:\n' + infile)
+            proc = ("\"{pathToBlender}\" --background --python {pathToBlenderToFBX} -- \"{infile}\" \"{outfile}\"").format(
                 pathToBlender=pathToBlender,
                 pathToBlenderToFBX=pathToBlenderToFBX,
                 infile=infile,
